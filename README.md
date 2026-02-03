@@ -32,8 +32,8 @@ A cleaned-up version of the Thyroid repo with only essential code.
 Ensure you have Python 3.8+ and a CUDA-enabled GPU (optional but recommended).
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/yh250/Thyroid_clean.git
+cd Thyroid_clean
 
 # Install dependencies
 pip install torch torchvision numpy opencv-python Pillow matplotlib seaborn scikit-learn
