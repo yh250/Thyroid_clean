@@ -9,7 +9,7 @@ A cleaned-up version of the Thyroid repo with only essential code.
 
 ---
 
-## 📂 Directory Structure
+### Directory Structure
 
 ```text
 .
@@ -26,9 +26,9 @@ A cleaned-up version of the Thyroid repo with only essential code.
 
 ---
 
-## 🛠️ Environment & Setup
+### Environment & Setup
 
-### **1. Installation**
+#### **1. Installation**
 Ensure you have Python 3.8+ and a CUDA-enabled GPU (optional but recommended).
 ```bash
 # Clone the repository
@@ -39,7 +39,7 @@ cd Thyroid_clean
 pip install torch torchvision numpy opencv-python Pillow matplotlib seaborn scikit-learn
 ```
 
-### **2. Silicon Mac (M1/M2/M3) Setup**
+#### **2. Silicon Mac (M1/M2/M3) Setup**
 If you encounter SSL errors while downloading pretrained weights, the scripts include a built-in fix:
 
 ```python
@@ -49,16 +49,16 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 ---
 
-##  Module Documentation
+###  Module Documentation
 
 This project is built for **independence**. Each part can be used without the others, though they share a common directory logic.
 
-### **1. STEM Augmentation (`STEM2.py`)**
+#### **1. STEM Augmentation (`STEM2.py`)**
 **Standalone Tool.** Use this to preprocess raw scans into edge-mapped datasets before training.
 * **Configuration:** Edit the `train_data_dir` and `output` paths in the script.
 * **Run:** `python STEM2.py`
 
-### **2. Training Pipeline (`Torch_grad_train.py`)**
+#### **2. Training Pipeline (`Torch_grad_train.py`)**
 The primary orchestrator for model training.
 
 * **Modular Selection:** Switch models (e.g., `GradCAMReadyAlexNet`) via the `model` instantiation line.
@@ -67,13 +67,13 @@ The primary orchestrator for model training.
 * **Early Stopping:** Defaults to 30 epochs of patience; adjust via `patience_counter`.
 * **Run:** `python Torch_grad_train.py`
 
-### **3. Standalone Testbench (`utils/test_bench2.py`)**
+#### **3. Standalone Testbench (`utils/test_bench2.py`)**
 **Standalone Tool.** Validate existing `.pth` weights against any dataset without re-training.
 * **Configuration:** Update `best_model_path` and `test_data_dir`.
 * **Note:** Ensure the `transform` matches your training settings exactly.
 * **Run:** `python utils/test_bench2.py`
 
-### **4. Advanced XAI Driver (`Run_Xai.py`)**
+#### **4. Advanced XAI Driver (`Run_Xai.py`)**
 A post-hoc visualization tool to audit model focus regions.
 
 | Method | Type | Description |
@@ -87,7 +87,7 @@ A post-hoc visualization tool to audit model focus regions.
 
 ---
 
-## ⚠️ Critical Troubleshooting (Avoid these common errors)
+### ⚠️ Critical Troubleshooting (Avoid these common errors)
 
 * **Input Channels:** Most medical scans are grayscale. Always ensure `input_channels=1` is passed to the model constructor.
 * **Target Layers:** Gradient-based XAI (Grad-CAM) requires a "target layer" hook. If adding a new architecture, you **must** update the `get_target_layer` function in `Run_Xai.py`.
@@ -96,7 +96,7 @@ A post-hoc visualization tool to audit model focus regions.
 
 ---
 
-## 📊 Evaluation & Results
+###  Evaluation & Results
 All scripts output results to a timestamped directory (e.g., `AlexNet_STEM_2026.../`) containing:
 * `classification_report.json`: Precision, Recall, F1 scores.
 * `confusion_matrix.png`: Heatmap of classification accuracy.
