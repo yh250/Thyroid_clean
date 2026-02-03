@@ -18,7 +18,7 @@ A cleaned-up version of the Thyroid repo with only essential code.
 ├── utils/                  # Standalone Evaluation Tools
 │   ├── test.py             # Performance metric logic (ROC, Confusion Matrix, JSON logs)
 │   └── test_bench2.py      # Standalone driver for validating trained weights
-├── stem_2.py               # STEM (Spatio-Temporal Edge Mapping) engine
+├── STEM2.py               # STEM (Spatio-Temporal Edge Mapping) engine
 ├── Run_Xai.py              # Configuration-driven post-hoc visualization driver
 ├── Torch_grad_train.py     # Main training pipeline with integrated Grad-CAM hooks
 └── results/                # Auto-generated timestamped metrics and plots
@@ -53,10 +53,10 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 This project is built for **independence**. Each part can be used without the others, though they share a common directory logic.
 
-### **1. STEM Augmentation (`stem_2.py`)**
+### **1. STEM Augmentation (`STEM2.py`)**
 **Standalone Tool.** Use this to preprocess raw scans into edge-mapped datasets before training.
 * **Configuration:** Edit the `train_data_dir` and `output` paths in the script.
-* **Run:** `python stem_2.py`
+* **Run:** `python STEM2.py`
 
 ### **2. Training Pipeline (`Torch_grad_train.py`)**
 The primary orchestrator for model training.
